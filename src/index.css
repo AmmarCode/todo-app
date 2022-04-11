@@ -2,7 +2,7 @@
 
 *,
 *::before,
-*::after { 
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -11,7 +11,7 @@
 :root {
   --main-background: hsl(235, 21%, 11%);
   --todo-background: hsl(235, 24%, 19%);
-
+  --todo-color: hsl(234, 11%, 52%);
 }
 
 html {
@@ -23,7 +23,7 @@ body {
   font-family: "Josefin Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: hsl(235, 21%, 11%);
+  background-color: var(--main-background);
 }
 
 .theme-color {
@@ -39,7 +39,7 @@ body {
   top: 70px;
   color: hsl(0, 0%, 98%);
   letter-spacing: 11px;
-  
+
 }
 
 .todo-form {
@@ -49,9 +49,9 @@ body {
   width: 427px;
   height: 50px;
   padding: 5px 5px 5px 55px;
-  color: hsl(234, 11%, 52%);
+  color: var(--todo-color);
   border: none;
-  background-color: hsl(235, 24%, 19%);
+  background-color: var(--todo-background);
   border-radius: 5px;
   font-size: 18px;
   margin-bottom: 15px;
@@ -63,18 +63,18 @@ body {
   outline: none;
 }
 
-.todo-check {
+.todo-check-mark {
   position: absolute;
   left: 467px;
   top: 145px;
   border-radius: 50%;
   border: 1px solid hsl(234, 11%, 52%);
   padding: 5px;
-  background:linear-gradient(320deg, hsl(280, 87%, 65%), hsl(192, 100%, 67%) );
+  background: linear-gradient(320deg, hsl(280, 87%, 65%), hsl(192, 100%, 67%));
   cursor: pointer;
 }
 
-.check-circle {
+.todo-check-mark-border {
   position: absolute;
   left: 467px;
   top: 145px;
@@ -86,4 +86,3 @@ body {
   display: inline-block;
   cursor: pointer;
 }
-
