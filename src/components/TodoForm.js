@@ -18,9 +18,9 @@ const TodoForm = () => {
           autoComplete="off"
         />
         {checked ? (
-          <img className="todo-check" src="images/icon-check.svg" onClick={handleChecked} />
+          <img className="todo-check-mark" src="images/icon-check.svg" onClick={handleChecked} />
         ) : (
-          <span className="check-circle" onClick={handleChecked}></span>
+          <span className="todo-check-mark-border" onClick={handleChecked}></span>
         )}
       </form>
     </div>
