@@ -1,24 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import useLocalStorage from "use-local-storage";
 
 const Header = () => {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useLocalStorage("theme", localStorage.getItem('theme') || 'dark');
 
   const changeTheme = () => {
 		theme === "dark" 
 		? setTheme("light")
 		: setTheme('dark')
 	};
+
+  useEffect(() => {
+    document.documentElement.className = theme;
+  }, [theme])
   return (
     <div>
       {theme === "dark" ? (
         <div>
+          <div className="header-img"></div>
           <img
-            className="header-img"
-            src="images/bg-desktop-dark.jpg"
-            alt="header-banner"
-          />
-          <img
-            className="theme-color"
+            className="theme-toggle"
             src="images/icon-sun.svg"
             alt="Theme-color"
             onClick={changeTheme}
@@ -26,13 +27,9 @@ const Header = () => {
         </div>
       ) : (
         <div>
+          <div className="header-img"></div>
           <img
-            className="header-img"
-            src="images/bg-desktop-light.jpg"
-            alt="header-banner"
-          />
-          <img
-            className="theme-color"
+            className="theme-toggle"
             src="images/icon-moon.svg"
             alt="Theme-color"
             onClick={changeTheme}
