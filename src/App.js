@@ -6,12 +6,11 @@ import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
 
 function App() {
-  const [todo, setTodo] = useState("");
-  const [todos, setTodos] = useLocalStorage("todos", []);
+  const [todoItem, setTodo] = useState("");
+  const [todosList, setTodosList] = useLocalStorage("todosList", []);
 
   const handleTodoInput = (e) => {
     e.preventDefault();
-    // console.log(e.target.value);
     setTodo(e.target.value);
   };
 
@@ -19,44 +18,43 @@ function App() {
     e.preventDefault();
     const newItem = {
       id: new Date().getTime().toString(),
-      todoItem: todo,
+      todoItem: todoItem,
       checked: false,
     };
-    setTodos((todos) => {
-      return [...todos, newItem];
+    setTodosList((todosList) => {
+      return [...todosList, newItem];
     });
     setTodo("");
   };
 
   const handleChecked = (id) => {
-    setTodos(todos.map(todo => {
-      if(todo.id === id && todo.checked === false) {
-        return {...todo, checked:true}
-      } else if (todo.id === id && todo.checked === true) {
-        return {...todo, checked:false}
+    setTodosList(todosList.map(todoItem => {
+      if(todoItem.id === id && todoItem.checked === false) {
+        return {...todoItem, checked:true}
+      } else if (todoItem.id === id && todoItem.checked === true) {
+        return {...todoItem, checked:false}
       } else {
-        return todo
+        return todoItem
       }
     }))
   };
 
   const handleDelete = (id) => {
-    setTodos(
-      todos.filter((todo) => todo.id !== id)
+    setTodosList(
+      todosList.filter((todoItem) => todoItem.id !== id)
     );
   };
 
-  useEffect(() => {}, [todos, todo]);
   return (
     <div>
       <Header />
       <TodoForm
-        todo={todo}
+        todoItem={todoItem}
         handleTodoInput={handleTodoInput}
         handleSubmit={handleSubmit}
       />
       <TodoList
-        todos={todos}
+        todosList={todosList}
         handleChecked={handleChecked}
         handleDelete={handleDelete}
       />

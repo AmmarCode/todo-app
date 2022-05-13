@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const TodoForm = ({ todo, handleTodoInput, handleSubmit }) => {
+const TodoForm = ({ todoItem, handleTodoInput, handleSubmit }) => {
   const [checked, setChecked] = useState(false);
 
   const handleChecked = () => {
@@ -16,7 +16,7 @@ const TodoForm = ({ todo, handleTodoInput, handleSubmit }) => {
           placeholder="Create a new todo..."
           autoComplete="off"
           onChange={handleTodoInput}
-          value={todo}
+          value={todoItem}
           maxLength="40"
         />
         {checked ? (

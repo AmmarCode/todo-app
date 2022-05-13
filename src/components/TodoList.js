@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-const TodoList = ({ todos, handleChecked, handleDelete }) => {
-  useEffect(() => {}, [todos]);
+const TodoList = ({ todosList, handleChecked, handleDelete }) => {
+  useEffect(() => {}, [todosList]);
   return (
     <div>
       <div className="todos-list-container">
-        {todos &&
-          todos.map((item, index) => {
+        {todosList &&
+          todosList.map((item, index) => {
             return (
               <div key={item.id}>
                 {index === 0 ? (
@@ -80,7 +80,7 @@ const TodoList = ({ todos, handleChecked, handleDelete }) => {
             );
           })}
         <div className="navbar">
-          <p className="navbar-item">{todos.length} items left</p>
+          <p className="navbar-item">{todosList.length} items left</p>
           <p className="navbar-item upper">All</p>
           <p className="navbar-item upper">Active</p>
           <p className="navbar-item upper">Completed</p>
