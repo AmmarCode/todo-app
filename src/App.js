@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import useLocalStorage from "use-local-storage";
 
 import Header from "./components/Header";
@@ -8,6 +8,7 @@ import TodoList from "./components/TodoList";
 function App() {
   const [todoItem, setTodo] = useState("");
   const [todosList, setTodosList] = useLocalStorage("todosList", []);
+  const [activeList, setActiveList] = useState("all");
 
   const handleTodoInput = (e) => {
     e.preventDefault();
@@ -27,23 +28,39 @@ function App() {
     setTodo("");
   };
 
-  const handleChecked = (id) => {
-    setTodosList(todosList.map(todoItem => {
-      if(todoItem.id === id && todoItem.checked === false) {
-        return {...todoItem, checked:true}
-      } else if (todoItem.id === id && todoItem.checked === true) {
-        return {...todoItem, checked:false}
-      } else {
-        return todoItem
-      }
-    }))
+  const handleCheck = (id) => {
+    setTodosList(
+      todosList.map((todoItem) => {
+        if (todoItem.id === id && todoItem.checked === false) {
+          return { ...todoItem, checked: true };
+        } else if (todoItem.id === id && todoItem.checked === true) {
+          return { ...todoItem, checked: false };
+        } else {
+          return todoItem;
+        }
+      })
+    );
   };
 
   const handleDelete = (id) => {
-    setTodosList(
-      todosList.filter((todoItem) => todoItem.id !== id)
-    );
+    setTodosList(todosList.filter((item) => item.id !== id));
   };
+
+  const handleClearCompleted = () => {
+    setTodosList(todosList.filter((item) => item.checked === false));
+  };
+
+  const handleGetAll = () => {
+    setActiveList('all')
+  }
+
+  const handleGetActive = () => {
+    setActiveList('active')
+  }
+
+  const handleGetCompleted = () => {
+    setActiveList('completed')
+  }
 
   return (
     <div>
@@ -54,9 +71,14 @@ function App() {
         handleSubmit={handleSubmit}
       />
       <TodoList
+        activeList={activeList}
         todosList={todosList}
-        handleChecked={handleChecked}
+        handleCheck={handleCheck}
         handleDelete={handleDelete}
+        handleClearCompleted={handleClearCompleted}
+        handleGetAll={handleGetAll}
+        handleGetActive={handleGetActive}
+        handleGetCompleted={handleGetCompleted}
       />
     </div>
   );
