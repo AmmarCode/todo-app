@@ -197,6 +197,7 @@ hr{
 
 .navbar-item {
   color: var(--navbar-item-color);
+  cursor: pointer;
 }
 
 .navbar-item:hover,
@@ -212,6 +213,9 @@ hr{
   margin: 0 11px;
 }
 
+.all {
+  color: rgb(6, 104, 233);
+}
 @media screen and (max-width: 1024px) {
   .header-img {
     background-size: cover;    
