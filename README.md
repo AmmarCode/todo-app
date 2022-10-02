@@ -39,7 +39,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [https://www.frontendmentor.io/solutions/todo-app(https://www.frontendmentor.io/solutions/todo-app-c4Pd-nE6bY)
+- Solution URL: [https://www.frontendmentor.io/solutions/todo-app](https://www.frontendmentor.io/solutions/todo-app-c4Pd-nE6bY)
 - Live Site URL: [https://ammarcode.github.io/todo-app/](https://ammarcode.github.io/todo-app/)
 
 ### Built with
