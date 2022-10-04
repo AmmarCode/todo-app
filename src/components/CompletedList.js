@@ -9,7 +9,7 @@ const CompletedList = ({
   const completedItems = todosList.filter((item) => item.checked === true);
 
   return (
-    <main className="todos-list-container">
+    <div className="todos-list-container">
       {activeList === "completed" && todosList
         ? completedItems.map((item, index) => {
             return (
@@ -89,7 +89,7 @@ const CompletedList = ({
             );
           })
         : null}
-    </main>
+    </div>
   );
 };
 

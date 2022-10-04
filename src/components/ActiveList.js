@@ -4,7 +4,7 @@ const ActiveList = ({ todosList, activeList, handleCheck, handleDelete }) => {
   const activeItems = todosList.filter((item) => item.checked === false);
 
   return (
-    <main className="todos-list-container">
+    <div className="todos-list-container">
       {activeList === "active" && todosList
         ? activeItems.map((item, index) => {
             return (
@@ -84,7 +84,7 @@ const ActiveList = ({ todosList, activeList, handleCheck, handleDelete }) => {
             );
           })
         : null}
-    </main>
+    </div>
   );
 };
 
