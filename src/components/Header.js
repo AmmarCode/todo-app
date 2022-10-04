@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import useLocalStorage from "use-local-storage";
 
 const Header = () => {
-  const [theme, setTheme] = useLocalStorage("theme", localStorage.getItem('theme') || 'dark');
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    localStorage.getItem("theme") || "dark"
+  );
 
   const changeTheme = () => {
-		theme === "dark" 
-		? setTheme("light")
-		: setTheme('dark')
-	};
+    theme === "dark" ? setTheme("light") : setTheme("dark");
+  };
 
   useEffect(() => {
     document.documentElement.className = theme;
-  }, [theme])
+  }, [theme]);
   return (
-    <div>
+    <header>
       {theme === "dark" ? (
         <div>
           <div className="header-img"></div>
@@ -37,7 +38,7 @@ const Header = () => {
         </div>
       )}
       <h1 className="header-title">TODO</h1>
-    </div>
+    </header>
   );
 };
 

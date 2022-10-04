@@ -17,20 +17,13 @@ const TodoForm = ({ todoItem, handleTodoInput, handleSubmit }) => {
           autoComplete="off"
           onChange={handleTodoInput}
           value={todoItem}
-          maxLength="40"
+          maxLength="100"
+          required={true}
         />
-        {checked ? (
-          <img
-            className="todo-item-check-mark"
-            src="images/icon-check.svg"
-            onClick={handleChecked}
-          />
-        ) : (
-          <span
-            className="todo-item-check-mark-border"
-            onClick={handleChecked}
-          ></span>
-        )}
+        <span
+          className="todo-item-check-mark-border"
+          onClick={handleChecked}
+        ></span>
       </form>
     </div>
   );

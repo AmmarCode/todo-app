@@ -4,6 +4,9 @@ import useLocalStorage from "use-local-storage";
 import Header from "./components/Header";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
+import Navbar from "./components/Navbar";
+import ActiveList from "./components/ActiveList";
+import CompletedList from "./components/CompletedList";
 
 function App() {
   const [todoItem, setTodo] = useState("");
@@ -51,16 +54,16 @@ function App() {
   };
 
   const handleGetAll = () => {
-    setActiveList('all')
-  }
+    setActiveList("all");
+  };
 
   const handleGetActive = () => {
-    setActiveList('active')
-  }
+    setActiveList("active");
+  };
 
   const handleGetCompleted = () => {
-    setActiveList('completed')
-  }
+    setActiveList("completed");
+  };
 
   return (
     <div>
@@ -75,10 +78,25 @@ function App() {
         todosList={todosList}
         handleCheck={handleCheck}
         handleDelete={handleDelete}
-        handleClearCompleted={handleClearCompleted}
+      />
+      <ActiveList
+        activeList={activeList}
+        todosList={todosList}
+        handleCheck={handleCheck}
+        handleDelete={handleDelete}
+      />
+      <CompletedList
+        todosList={todosList}
+        activeList={activeList}
+        handleCheck={handleCheck}
+        handleDelete={handleDelete}
+      />
+      <Navbar
+        todosList={todosList}
         handleGetAll={handleGetAll}
         handleGetActive={handleGetActive}
         handleGetCompleted={handleGetCompleted}
+        handleClearCompleted={handleClearCompleted}
       />
     </div>
   );
